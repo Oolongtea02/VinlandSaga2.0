@@ -4,41 +4,67 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    float xspeed;
-    float yspeed;
+    [SerializeField] private float movementSpeed;
     Rigidbody2D playerRB;
-    RaycastHit2D hit;
+    private float Move;
+    public Vector2 boxSize;
+    public float castDistance;
+    [SerializeField] private LayerMask groundLayer;
+
     RaycastHit2D enemyhit;
+
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void OnMove (InputValue movementValue){
-        Vector2 movementVector = movementValue.Get<Vector2>(); 
-        xspeed = movementVector.x;
-        yspeed = movementVector.y;
+    void OnMove(InputValue movementValue)
+    {
+        // playerRB.velocity = new Vector2(movementValue.Get<Vector2>().x * movementSpeed, playerRB.velocity.y);
     }
-    void OnJump (InputValue movementValue){
-        hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(0, -1), Mathf.Infinity);
-        if(hit.distance < 1.0f){
-            playerRB.AddForce(new Vector3(0.0f, 300.0f, 0.0f));
+
+    void OnJump(InputValue movementValue)
+    {
+        // Only jump if player is grounded
+        if (IsGrounded())
+        {
+            Debug.Log("Jump");
+            playerRB.AddForce(new Vector2(playerRB.velocity.x, 500.0f));
         }
-        //Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector3.right, Color.green, 5.0f);
     }
-    void OnFire (InputValue fireValue){
+
+    public bool IsGrounded()
+    {
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
+    //}
+
+    void OnFire(InputValue fireValue)
+    {
         enemyhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(1, 0), Mathf.Infinity);
-        if(enemyhit.distance < 3.0f){
-            if(enemyhit.rigidbody.tag == "Killable"){
+        if (enemyhit.distance < 3.0f)
+        {
+            if (enemyhit.rigidbody != null && enemyhit.rigidbody.CompareTag("Killable"))
+            {
                 Destroy(enemyhit.rigidbody.gameObject);
             }
         }
     }
-    private void FixedUpdate()
+
+    private void Update()
     {
-        transform.Translate(new Vector3(xspeed, yspeed) * Time.deltaTime* 6);
-        
+        Move = Input.GetAxis("Horizontal");
+        playerRB.velocity = new Vector2(Move * movementSpeed, playerRB.velocity.y);
     }
 }
