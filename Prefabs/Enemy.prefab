@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3434166403209770448}
   - component: {fileID: 4071640772750050529}
   - component: {fileID: 3702375003284210042}
+  - component: {fileID: 7347485750099849775}
   - component: {fileID: 2505136335357244428}
   - component: {fileID: 6804420347080438695}
   m_Layer: 0
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ff88596a2b39424c9871388aaa84484, type: 2}
+  - {fileID: 2100000, guid: 75381a189340b814da5bbf36b2bf282d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,6 +86,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7347485750099849775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2369251419012710058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991840893973345448acf0df7cc196c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  moveSpeed: 2
+  chargeSpeed: 5
+  patrolDist: 5
+  lookDistance: 10
 --- !u!50 &2505136335357244428
 Rigidbody2D:
   serializedVersion: 4
@@ -111,7 +129,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6804420347080438695
 BoxCollider2D:
   m_ObjectHideFlags: 0
