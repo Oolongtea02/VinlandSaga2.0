@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform player;
 
+    // Have Camera follow player
     void Update()
     {
         transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
