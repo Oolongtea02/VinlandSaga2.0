@@ -23,15 +23,17 @@ public class PlayerController : MonoBehaviour
     }
     Direction playerDirection;
     playerState thePlayerState;
+    public bool hasWeapon;
     void Start()
     {
         health = 3;
         playerRB = gameObject.GetComponent<Rigidbody2D>();
         playerDirection = Direction.right;
         thePlayerState = playerState.neutral;
+        hasWeapon = false;
     }
 
-    void OnMove(InputValue movementValue)
+    void OnMove(InputValue movementValue) 
     {
         moveDirection = movementValue.Get<Vector2>();
     }
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(0, -1), Mathf.Infinity);
         // Check if player is grounded
-        if (hit.distance < 1.0f)
+        if ((hit.distance < 1.0f) && (hit.collider != null))
         {
             //playerRB.AddForce(new Vector3(0.0f, 10.0f, 0.0f), ForceMode2D.Impulse);
             playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
@@ -48,24 +50,26 @@ public class PlayerController : MonoBehaviour
     }
     void OnFire(InputValue fireValue)
     {
-        float directionNum;
-        // Player facing left
-        if (playerDirection == Direction.left)
-        {
-            directionNum = -1;
-        }
-        // Player facing right
-        else
-        {
-            directionNum = 1;
-        }
-        enemyhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(directionNum, 0), Mathf.Infinity);
-        if ((enemyhit.distance < 3.0f) && (enemyhit.collider != null))
-        {
-            if (enemyhit.rigidbody.tag == "Killable") // check if object hit was enemy
+        if(hasWeapon){
+            float directionNum;
+            // Player facing left
+            if (playerDirection == Direction.left)
             {
-                Destroy(enemyhit.rigidbody.gameObject);
-                Debug.Log("Enemy Killed");
+                directionNum = -1;
+            }
+            // Player facing right
+            else
+            {
+                directionNum = 1;
+            }
+            enemyhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(directionNum, 0), Mathf.Infinity);
+            if ((enemyhit.distance < 3.0f) && (enemyhit.collider != null))
+            {
+                if (enemyhit.rigidbody.tag == "Killable") // check if object hit was enemy
+                {
+                    Destroy(enemyhit.rigidbody.gameObject);
+                    Debug.Log("Enemy Killed");
+                }
             }
         }
     }
