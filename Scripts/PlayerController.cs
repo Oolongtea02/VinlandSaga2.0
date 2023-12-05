@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 6;
-    [SerializeField] private float jumpForce = 50f;
+    [SerializeField] private float movementSpeed = 8;
+    [SerializeField] private float jumpForce = 15f;
     [SerializeField] public int health;
+    public Animator playerAnim;
     private Vector2 moveDirection;
     Rigidbody2D playerRB;
     RaycastHit2D hit;
@@ -21,9 +20,12 @@ public class PlayerController : MonoBehaviour
         neutral,
         blocking
     }
+
+    public SpriteRenderer spriteRenderer;
     Direction playerDirection;
     playerState thePlayerState;
-    public bool hasWeapon;
+    [SerializeField] public bool hasWeapon;
+
     void Start()
     {
         health = 3;
@@ -31,11 +33,33 @@ public class PlayerController : MonoBehaviour
         playerDirection = Direction.right;
         thePlayerState = playerState.neutral;
         hasWeapon = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (playerDirection == Direction.left)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (playerDirection == Direction.right)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
     void OnMove(InputValue movementValue) 
     {
         moveDirection = movementValue.Get<Vector2>();
+        if ((Input.GetKeyDown("a") || Input.GetKeyDown("d")))
+        {
+            playerAnim.SetBool("isWalking", true);
+        }
+        else
+        {
+            // Stop walk animation if not moving
+            playerAnim.SetBool("isWalking", false);
+        }
     }
     void OnJump(InputValue movementValue)
     {
@@ -43,14 +67,14 @@ public class PlayerController : MonoBehaviour
         // Check if player is grounded
         if ((hit.distance < 1.0f) && (hit.collider != null))
         {
-            //playerRB.AddForce(new Vector3(0.0f, 10.0f, 0.0f), ForceMode2D.Impulse);
             playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
+            playerAnim.Play("Jump");
         }
-        //Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), Vector3.right, Color.green, 5.0f);
     }
     void OnFire(InputValue fireValue)
     {
-        if(hasWeapon){
+        Debug.Log("Attack pressed");
+        if (hasWeapon){
             float directionNum;
             // Player facing left
             if (playerDirection == Direction.left)
@@ -62,6 +86,8 @@ public class PlayerController : MonoBehaviour
             {
                 directionNum = 1;
             }
+            Debug.Log("Attack");
+            playerAnim.Play("Attack");
             enemyhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(directionNum, 0), Mathf.Infinity);
             if ((enemyhit.distance < 3.0f) && (enemyhit.collider != null))
             {
@@ -88,10 +114,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1))
         {
             thePlayerState = playerState.blocking;
+            playerAnim.Play("Block");
         }
         else
         {
             thePlayerState = playerState.neutral;
+            playerAnim.StopPlayback();
         }
     }
     public void DamagePlayer()
