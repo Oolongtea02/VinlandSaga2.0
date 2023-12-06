@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 22060c0ce08864d41b81e2f22be0a88a
+guid: 080ae8fefd6f7af4e910f64e3a28f83b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,17 +115,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84814c9abe640ec469a166cd65c798e8
-      internalID: 948230507
+      spriteID: a8e52b3c8e38f4a4daf59644809963f2
+      internalID: 787787147
       vertices: []
       indices: 
       edges: []
@@ -134,19 +134,19 @@ TextureImporter:
       name: Walk
       rect:
         serializedVersion: 2
-        x: 16
+        x: 80
         y: 0
-        width: 16
-        height: 16
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ea65e99083c2054dad6138233423714
-      internalID: 1940429849
+      spriteID: bc26ddd7e6b4e5c438a45f9cda2c7a5e
+      internalID: 1629648891
       vertices: []
       indices: 
       edges: []
@@ -155,19 +155,19 @@ TextureImporter:
       name: Jump
       rect:
         serializedVersion: 2
-        x: 32
+        x: 160
         y: 0
-        width: 16
-        height: 16
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e1fbbd8ef201094a82382e4bacf673c
-      internalID: 2127869623
+      spriteID: 526dad023d2c7044fbead015ccb8eb8b
+      internalID: -724931459
       vertices: []
       indices: 
       edges: []
@@ -176,19 +176,19 @@ TextureImporter:
       name: Attack
       rect:
         serializedVersion: 2
-        x: 48
+        x: 240
         y: 0
-        width: 16
-        height: 16
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 100f622e3f6e696488393b7da8f52218
-      internalID: -812526180
+      spriteID: d0d21865c6400f04ab597c8324d43ad7
+      internalID: 530943933
       vertices: []
       indices: 
       edges: []
@@ -197,19 +197,19 @@ TextureImporter:
       name: Block
       rect:
         serializedVersion: 2
-        x: 64
+        x: 320
         y: 0
-        width: 16
-        height: 16
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b291336d12885964c9e730ca773a277e
-      internalID: 258037717
+      spriteID: 9a3d545fc7865e24aaff0d3105bd3cd3
+      internalID: 887765923
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack: -812526180
-      Block: 258037717
-      Idle: 948230507
-      Jump: 2127869623
-      Walk: 1940429849
+      Attack: 530943933
+      Block: 887765923
+      Idle: 787787147
+      Jump: -724931459
+      Walk: 1629648891
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
