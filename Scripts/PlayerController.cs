@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         playerRB = gameObject.GetComponent<Rigidbody2D>();
         playerDirection = Direction.right;
         thePlayerState = playerState.neutral;
-        hasWeapon = false;
+        hasWeapon = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
