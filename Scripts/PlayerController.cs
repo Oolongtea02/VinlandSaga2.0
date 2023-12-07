@@ -21,10 +21,12 @@ public class PlayerController : MonoBehaviour
         blocking
     }
 
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     Direction playerDirection;
     playerState thePlayerState;
     [SerializeField] public bool hasWeapon;
+    public ParticleSystem walkParticles;
+    public ParticleSystem jumpParticles;
 
     void Start()
     {
@@ -54,11 +56,13 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetKeyDown("a") || Input.GetKeyDown("d")))
         {
             playerAnim.SetBool("isWalking", true);
+            walkParticles.Play();
         }
         else
         {
             // Stop walk animation if not moving
             playerAnim.SetBool("isWalking", false);
+            walkParticles.Stop();
         }
     }
     void OnJump(InputValue movementValue)
@@ -69,11 +73,11 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
             playerAnim.Play("Jump");
+            jumpParticles.Play();
         }
     }
     void OnFire(InputValue fireValue)
     {
-        Debug.Log("Attack pressed");
         if (hasWeapon){
             float directionNum;
             // Player facing left
@@ -86,7 +90,6 @@ public class PlayerController : MonoBehaviour
             {
                 directionNum = 1;
             }
-            Debug.Log("Attack");
             playerAnim.Play("Attack");
             enemyhit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(directionNum, 0), Mathf.Infinity);
             if ((enemyhit.distance < 3.0f) && (enemyhit.collider != null))
