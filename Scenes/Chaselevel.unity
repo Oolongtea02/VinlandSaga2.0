@@ -287,6 +287,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5378703023508762610, guid: 585c7d14800dae245bb27422e012c0c7, type: 3}
   m_PrefabInstance: {fileID: 9816904}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &10957566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 804850058}
+    m_Modifications:
+    - target: {fileID: 2369251419012710058, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_Name
+      value: Enemy (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.787943
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056717934275560954, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d083d25c9d9c0224a9c34b89d81cdd5a, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+--- !u!4 &10957567 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3434166403209770448, guid: 447933c7604968c40982ab1e8cf9e45a, type: 3}
+  m_PrefabInstance: {fileID: 10957566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &18432226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3806,13 +3872,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -8854,7 +8922,7 @@ PrefabInstance:
     - target: {fileID: 8051865199084878342, guid: 585c7d14800dae245bb27422e012c0c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 491f8b3314877f444bd069b2dbd7b9d6, type: 2}
+      objectReference: {fileID: 2100000, guid: 1841fed37111c7f4595268b5d1ab7f0e, type: 2}
     - target: {fileID: 8227621058121400939, guid: 585c7d14800dae245bb27422e012c0c7, type: 3}
       propertyPath: m_Name
       value: Collide (1)
@@ -9161,6 +9229,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2020282251}
+  - {fileID: 10957567}
   - {fileID: 1324059625}
   - {fileID: 1816753279}
   - {fileID: 1891503564}
@@ -10705,13 +10774,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
